@@ -1,15 +1,15 @@
 const width = 500;
 const height = 500;
-const margin = {top: 40, left: 40, bottom: 40, right: 40};
- 
+const margin = { top: 40, left: 40, bottom: 40, right: 40 };
+
 const data = [
-    {name: 'a', value: 3074.5},
-    {name: 'b', value: 3074.5},
-    {name: 'c', value: 3074.5},
-    {name: 'd', value: 3074.5},
-    {name: 'e', value: 3074.5},
-  ];
- 
+  { name: 'a', value: 3074.5 },
+  { name: 'b', value: 3074.5 },
+  { name: 'c', value: 3074.5 },
+  { name: 'd', value: 3074.5 },
+  { name: 'e', value: 3074.5 },
+];
+
 const x = d3.scaleBand()
   .domain(data.map(d => d.name))
   .range([margin.left, width - margin.right])
@@ -17,7 +17,7 @@ const x = d3.scaleBand()
 
 const y = d3.scaleLinear()
   .domain([0, d3.max(data, d => d.value)]).nice()
-    .range([height - margin.bottom, margin.top]);
+  .range([height - margin.bottom, margin.top]);
 
 const xAxis = g => g
   .attr('transform', `translate(0, ${height - margin.bottom})`)
@@ -29,7 +29,7 @@ const yAxis = g => g
   .call(d3.axisLeft(y))
 
 const svg = d3.select('svg').style('width', width).style('height', height);
- 
+
 svg.append('g').call(xAxis);
 svg.append('g').call(yAxis);
 svg.append('g')
